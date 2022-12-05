@@ -1,0 +1,50 @@
+<%=@error%>
+<div class="container"> 
+<h3>Ваш заказ принят</h3>
+<label>Детали заказа: </label>
+<ul class="list-group">
+  <li class="list-group-item">Идентификатор заказа: <%=@new_order.id%></li>
+  <li class="list-group-item">Имя: <%=@new_order.client_name%></li>
+  <li class="list-group-item">Номер телефона: <%=@new_order.client_phone_number%></li>
+  <li class="list-group-item">Адрес доставки: <%=@new_order.client_adress%></li>
+  <li class="list-group-item">К оплате: <%=@new_order.total_price%></li>
+</ul>
+
+<p>Через <span id="time"></span> секунд вы будете перенаправлены на главную страницу</p>
+</div>
+<div id='mia'></div>
+<script type="text/javascript">
+
+window.onload = back_to_main_page;
+
+
+let timeCnt = 10
+let time = document.getElementById('time')
+
+
+function back_to_main_page(){
+    setInterval(decreaseTime,1000)
+
+    setTime(timeCnt)
+
+    clear_local_storage()
+}
+
+function clear_local_storage (){
+    localStorage.clear()
+}
+
+function decreaseTime(){
+    if (timeCnt===0){
+        window.location.href = '/'
+    }else{
+        let current = --timeCnt
+        setTime(current)
+    }
+ 
+}
+
+function setTime (value){
+   time.innerHTML = value 
+}
+</script>

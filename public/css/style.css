@@ -1,0 +1,11 @@
+*{
+    box-sizing: border-box;
+}
+
+
+
+
+
+.link:hover{
+    background-color: rgb(170, 218, 234);
+}

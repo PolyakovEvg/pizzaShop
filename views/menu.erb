@@ -1,0 +1,43 @@
+
+<div class="container d-flex">
+  <div class="list-group col col-lg-2 col-md-2">
+    <button type="link" class="link list-group-item list-group-item-action" disabled>Меню</button>
+    <a type="link" href="/pizzas" class="link list-group-item list-group-item-action" aria-current="true">
+      Пицца
+    </a>
+    <button type="button" class="link list-group-item list-group-item-action">Акция</button>
+    <button type="button" class="link list-group-item list-group-item-action">Для веганов</button>
+    <button type="button" class="link list-group-item list-group-item-action">Напитки</button>
+  </div>
+  
+  <div class="d-grid">
+  <div class="row">
+    <%for pizza in @pizzas%>
+      <div class="product-card col-lg-4 col-md-6 col-sm-1">
+        <div class="card" style="min-width: 18rem;">
+          <img src="<%=pizza.path_to_image%>" class="card-img-top" alt="<%=pizza.title%>">
+          <div class="card-body">
+            <h5 class="card-title"><%=pizza.title%></h5>
+            <p class="card-text" style="min-height: 70px"><%=pizza.description%></p>
+            <div class="row">
+              <span class="col-6"> Размер </span>
+              <span class="col-6"> Цена</span>
+            </div>
+            <div class="row">
+              <span class="col-6"> <%=pizza.size%> см.</span>
+              <span class="col-6"> <%=pizza.price%> руб.</span>
+            </div>
+            <div class="mt-3">
+            <span>Количество</span>
+            <button class="minus"><img src="/images/dash-square.svg" alt=""></button>
+            <span class="counter" id="<%=pizza.id%>">0</span>
+            <button class="plus"><img src="/images/plus-square.svg" alt=""></button>
+            </div>
+            <a href="#" onclick="add_item_to_cart(<%=pizza.id%>)" class="btn btn-primary mt-2 w-100">В корзину</a>
+          </div>
+        </div>
+      </div>
+    <%end%>
+    </div>
+</div>
+</div>
